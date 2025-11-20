@@ -1,1 +1,0 @@
-# flc-movie-ticketing-system-frontend-angular

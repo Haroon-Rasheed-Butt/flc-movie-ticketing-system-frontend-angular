@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "message": null,
+  "data": {
+    "id": 1,
+    "name": "Storm Front",
+    "description": "A retired detective faces a supernatural storm.",
+    "publicationYear": 2022,
+    "director": "Bilal Ahmed",
+    "actor": "Fahad Mustafa",
+    "genre": "Action",
+    "coverPhoto": "https://example.com/stormfront.jpg",
+    "ticketPrice": 18.0,
+    "typeId": 1,
+    "typeName": "Action",
+    "ownerId": 1,
+    "ownerUsername": "haroon"
+  }
+}

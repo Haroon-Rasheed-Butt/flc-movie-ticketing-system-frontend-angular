@@ -1,0 +1,38 @@
+version: '3.9'
+services:
+  mysql:
+    image: mysql:8.0
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: movie_ticketing
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - mysql-data:/var/lib/mysql
+    ports:
+      - 3306:3306
+
+  backend:
+    build:
+      context: ../Backend-Java
+    ports:
+      - 8080:8080
+    depends_on:
+      - mysql
+    environment:
+      MOVIE_DB_URL: jdbc:mysql://mysql:3306/movie_ticketing
+      MOVIE_DB_USERNAME: admin
+      MOVIE_DB_PASSWORD: admin
+
+  frontend:
+    build: .
+    ports:
+      - 4200:80
+    depends_on:
+      - backend
+    environment:
+      API_BASE_URL: http://backend:8080/api/v1
+
+volumes:
+  mysql-data:

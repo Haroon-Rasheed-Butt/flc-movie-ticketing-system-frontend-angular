@@ -1,0 +1,19 @@
+.rating-meta {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.score {
+  font-weight: 600;
+}
+
+.muted {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.no-ratings {
+  padding: 1rem;
+  font-style: italic;
+  color: rgba(0, 0, 0, 0.6);
+}

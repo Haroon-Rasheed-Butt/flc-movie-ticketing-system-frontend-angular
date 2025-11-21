@@ -1,0 +1,39 @@
+<section class="hero">
+  <div>
+    <h1>Now showing</h1>
+    <p>Browse curated ticketing experiences and add a show to your cart.</p>
+  </div>
+  <mat-form-field appearance="fill">
+    <mat-label>Account</mat-label>
+    <mat-select [formControl]="accountControl">
+      <mat-option *ngFor="let account of sampleAccounts" [value]="account.id">
+        {{ account.label }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</section>
+
+<section class="movies">
+  <div class="grid" *ngIf="movies.length">
+    <app-movie-card
+      *ngFor="let movie of movies"
+      [movie]="movie"
+      [selectedAccountId]="accountControl.value"
+      (addToCart)="handleAddToCart($event)"
+    ></app-movie-card>
+  </div>
+  <div class="empty-state" *ngIf="!movies.length && !isLoading">
+    No movies available. Try refreshing the page.
+  </div>
+  <div class="loading" *ngIf="isLoading">
+    <mat-progress-spinner diameter="40" mode="indeterminate"></mat-progress-spinner>
+  </div>
+</section>
+
+<mat-paginator
+  [length]="totalElements"
+  [pageSize]="size"
+  [pageSizeOptions]="pageSizes"
+  (page)="onPageChange($event)"
+>
+</mat-paginator>

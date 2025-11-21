@@ -1,0 +1,14 @@
+<div class="no-ratings" *ngIf="ratings.length === 0">
+  No ratings yet. Be the first to review!
+</div>
+<mat-list *ngIf="ratings.length">  
+  <mat-list-item *ngFor="let rating of ratings">
+    <mat-icon matListIcon>star</mat-icon>
+    <div class="rating-meta">
+      <span class="score">{{ rating.rating }} / 5</span>
+      <span class="date">{{ rating.ratingDate | date: 'medium' }}</span>
+    </div>
+    <p matLine>{{ rating.comment || 'No comment provided.' }}</p>
+    <small class="muted" matLine>Account {{ rating.accountId }}</small>
+  </mat-list-item>
+</mat-list>

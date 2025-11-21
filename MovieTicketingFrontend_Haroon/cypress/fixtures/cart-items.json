@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "message": null,
+  "data": [
+    {
+      "id": 1,
+      "quantity": 2,
+      "purchased": false,
+      "purchaseDate": null,
+      "movieId": 1,
+      "movieName": "Storm Front",
+      "ticketPrice": 18.0
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "message": "Checkout completed",
+  "data": {
+    "totalAmount": 36.0,
+    "processedItems": 2,
+    "transactions": [
+      {
+        "id": 5,
+        "totalAmount": 36.0,
+        "transactionDate": "2025-11-21T09:00:00Z",
+        "status": "COMPLETED",
+        "movieId": 1,
+        "accountId": 1
+      }
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+.app-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1100;
+}
+
+.logo {
+  font-weight: 600;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+a {
+  color: #fff;
+  font-weight: 500;
+}

@@ -1,0 +1,11 @@
+.app-shell {
+	padding: 1rem;
+	margin: 0 auto;
+	max-width: 1200px;
+}
+
+mat-progress-bar {
+	position: sticky;
+	top: 0;
+	z-index: 1200;
+}

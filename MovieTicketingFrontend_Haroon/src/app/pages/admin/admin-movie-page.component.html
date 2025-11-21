@@ -1,0 +1,81 @@
+<section class="admin-grid">
+  <mat-card>
+    <h2>{{ isEditing ? 'Update movie' : 'Create movie' }}</h2>
+    <form [formGroup]="movieForm" (ngSubmit)="submit()">
+      <div class="field-row">
+        <mat-form-field appearance="fill">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="name" />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Genre</mat-label>
+          <input matInput formControlName="genre" />
+        </mat-form-field>
+      </div>
+      <mat-form-field appearance="fill">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+      </mat-form-field>
+      <div class="field-row">
+        <mat-form-field appearance="fill">
+          <mat-label>Director</mat-label>
+          <input matInput formControlName="director" />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Actor</mat-label>
+          <input matInput formControlName="actor" />
+        </mat-form-field>
+      </div>
+      <div class="field-row">
+        <mat-form-field appearance="fill">
+          <mat-label>Type</mat-label>
+          <mat-select formControlName="typeId">
+            <mat-option *ngFor="let type of movieTypes" [value]="type.id">{{ type.label }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Year</mat-label>
+          <input matInput type="number" formControlName="publicationYear" />
+        </mat-form-field>
+      </div>
+      <div class="field-row">
+        <mat-form-field appearance="fill">
+          <mat-label>Ticket price</mat-label>
+          <input matInput type="number" formControlName="ticketPrice" />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Cover photo</mat-label>
+          <input matInput formControlName="coverPhoto" />
+        </mat-form-field>
+      </div>
+      <mat-form-field appearance="fill">
+        <mat-label>Owner account ID (optional)</mat-label>
+        <input matInput type="number" formControlName="accountId" />
+      </mat-form-field>
+      <div class="actions">
+        <button mat-raised-button color="primary" type="submit">{{ isEditing ? 'Update' : 'Create' }}</button>
+        <button mat-button type="button" *ngIf="isEditing" (click)="cancelEdit()">Cancel</button>
+      </div>
+    </form>
+  </mat-card>
+
+  <mat-card>
+    <h2>Movies</h2>
+    <mat-list>
+      <mat-list-item *ngFor="let movie of movies">
+        <div matLine>
+          <strong>{{ movie.name }}</strong>
+        </div>
+        <div matLine>
+          {{ movie.genre }} · ₹{{ movie.ticketPrice.toFixed(2) }}
+        </div>
+        <button mat-icon-button color="primary" (click)="edit(movie)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="delete(movie)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-list-item>
+    </mat-list>
+  </mat-card>
+</section>

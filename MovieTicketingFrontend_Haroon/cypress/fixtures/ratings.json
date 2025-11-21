@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "message": null,
+  "data": [
+    {
+      "id": 1,
+      "rating": 5,
+      "comment": "Loved it",
+      "ratingDate": "2025-11-20T12:00:00Z",
+      "movieId": 1,
+      "accountId": 1
+    }
+  ]
+}

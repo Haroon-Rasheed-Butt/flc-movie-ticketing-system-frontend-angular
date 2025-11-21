@@ -1,0 +1,71 @@
+<section class="grid">
+  <div class="card">
+    <div class="card-body">
+      <h2 class="card-title">Create account</h2>
+      <form [formGroup]="accountForm" (ngSubmit)="createAccount()">
+        <div class="field-row">
+          <label class="form-label w-100">
+            First name
+            <input class="form-control" formControlName="firstName" />
+          </label>
+          <label class="form-label w-100">
+            Last name
+            <input class="form-control" formControlName="lastName" />
+          </label>
+        </div>
+        <label class="form-label w-100">
+          Username
+          <input class="form-control" formControlName="username" />
+        </label>
+        <label class="form-label w-100">
+          Password
+          <input class="form-control" type="password" formControlName="password" />
+        </label>
+        <div class="form-check mb-3">
+          <input class="form-check-input" type="checkbox" formControlName="rememberMe" id="rememberMe" />
+          <label class="form-check-label" for="rememberMe">Remember me</label>
+        </div>
+        <button class="btn btn-primary" type="submit" [disabled]="accountForm.invalid">Create account</button>
+      </form>
+      <div *ngIf="createdAccount" class="account-card">
+        <p><strong>Username:</strong> {{ createdAccount.username }}</p>
+        <p><strong>Name:</strong> {{ createdAccount.firstName }} {{ createdAccount.lastName }}</p>
+        <p><strong>ID:</strong> {{ createdAccount.id }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h2 class="card-title">Account overview</h2>
+      <form class="field-row" (ngSubmit)="$event.preventDefault()">
+        <label class="form-label w-100">
+          Account ID
+          <select class="form-select" [formControl]="lookupControl">
+            <option *ngFor="let account of sampleAccounts" [value]="account.id">
+              {{ account.label }}
+            </option>
+          </select>
+        </label>
+        <button class="btn btn-outline-secondary" type="button" (click)="loadAccount()">Load account</button>
+      </form>
+      <div *ngIf="displayAccount" class="account-card">
+        <p><strong>{{ displayAccount.username }}</strong></p>
+        <p>{{ displayAccount.firstName }} {{ displayAccount.lastName }}</p>
+        <p>Remember me: {{ displayAccount.rememberMe }}</p>
+      </div>
+      <div *ngIf="transactions.length" class="transaction-list">
+        <h3>Transactions</h3>
+        <ul class="list-unstyled">
+          <li *ngFor="let tx of transactions">
+            <div class="d-flex justify-content-between">
+              <strong>₹{{ tx.totalAmount.toFixed(2) }}</strong>
+              <span>{{ tx.status }}</span>
+            </div>
+            <small>{{ tx.transactionDate | date: 'medium' }}</small>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

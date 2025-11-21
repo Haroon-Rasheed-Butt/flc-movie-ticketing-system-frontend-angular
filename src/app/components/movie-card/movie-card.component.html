@@ -1,0 +1,22 @@
+<article *ngIf="movie" class="movie-card card">
+  <div class="movie-card__poster">
+    <img [src]="movie.coverPhoto || placeholder" [alt]="movie.name" loading="lazy" />
+  </div>
+  <div class="movie-card__content card-body">
+    <h3 class="card-title">{{ movie.name }}</h3>
+    <p class="subtitle">{{ movie.typeName }} · {{ movie.genre || 'Genre TBD' }}</p>
+    <p class="description">{{ movie.description || 'No description provided yet.' }}</p>
+    <div class="meta">
+      <span>{{ movie.director || 'Director TBD' }}</span>
+      <span>{{ movie.actor || 'Actor TBD' }}</span>
+    </div>
+    <div class="price-row">
+      <strong>₹{{ movie.ticketPrice.toFixed(2) }}</strong>
+      <span class="year">{{ movie.publicationYear || 'Year TBD' }}</span>
+    </div>
+    <div class="actions">
+      <button type="button" class="btn btn-sm btn-primary" (click)="emitAdd()">Add to Cart</button>
+      <a class="btn btn-sm btn-outline-secondary" [routerLink]="['/movies', movie.id]">Details</a>
+    </div>
+  </div>
+</article>

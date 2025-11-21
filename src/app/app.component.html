@@ -1,0 +1,10 @@
+<app-header></app-header>
+<div class="loading-bar" *ngIf="loading$ | async"></div>
+<div class="app-message" *ngIf="message$ | async as message" [ngClass]="message.level" role="status">
+  <span>{{ message.text }}</span>
+  <button type="button" (click)="clearMessage()" aria-label="Close message">&times;</button>
+</div>
+<main class="app-shell">
+  <router-outlet></router-outlet>
+</main>
+<app-footer></app-footer>

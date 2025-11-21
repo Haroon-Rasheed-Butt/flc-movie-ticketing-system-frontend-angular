@@ -1,0 +1,52 @@
+.cart-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.cart-toolbar label {
+  flex: 1 1 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.cart-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.cart-item .card-title {
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+}
+
+.empty {
+  padding: 1rem;
+  color: rgba(0, 0, 0, 0.6);
+  text-align: center;
+}
+
+.checkout-panel {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.checkout-panel .total {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.checkout-panel .result {
+  margin-top: 1rem;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+}

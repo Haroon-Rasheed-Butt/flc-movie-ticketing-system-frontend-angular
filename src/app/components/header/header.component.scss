@@ -1,0 +1,32 @@
+:host {
+  display: block;
+}
+
+.app-header {
+  background-color: #1f2a37;
+  color: #ffffff;
+  padding: 0.75rem 0;
+}
+
+.app-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.app-header__inner nav a {
+  color: #f8f8f8;
+  font-weight: 500;
+  margin-left: 1.2rem;
+  text-decoration: none;
+}
+
+.app-header__inner nav a.active-link {
+  text-decoration: underline;
+}
+
+.logo {
+  font-weight: 600;
+}

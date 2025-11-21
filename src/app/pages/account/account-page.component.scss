@@ -1,0 +1,31 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.field-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.field-row label {
+  flex: 1 1 180px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.account-card {
+  padding: 0.5rem 0;
+}
+
+.transaction-list li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.transaction-list li:last-child {
+  border-bottom: none;
+}

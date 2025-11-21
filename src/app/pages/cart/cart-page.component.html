@@ -1,0 +1,42 @@
+<form class="cart-toolbar" [formGroup]="checkoutForm" (ngSubmit)="loadCart()">
+  <label class="form-label">
+    Account
+    <select class="form-select" formControlName="accountId">
+      <option *ngFor="let account of sampleAccounts" [value]="account.id">
+        {{ account.label }}
+      </option>
+    </select>
+  </label>
+  <button class="btn btn-outline-primary" type="submit">Refresh cart</button>
+</form>
+
+<div *ngIf="isLoading" class="loading">
+  <div class="spinner-border" role="status" aria-label="Loading cart"></div>
+</div>
+
+<div class="cart-list" *ngIf="!isLoading && cartItems.length">
+    <div *ngFor="let item of cartItems" class="cart-item card">
+      <div class="card-body">
+        <h3 class="card-title">{{ item.movieName }}</h3>
+        <p class="text-muted small mb-2">Qty: {{ item.quantity }} · ₹{{ item.ticketPrice.toFixed(2) }}</p>
+        <p class="mb-0">Purchased: {{ item.purchased ? 'Yes' : 'No' }}</p>
+      </div>
+    </div>
+</div>
+
+<div class="empty" *ngIf="!isLoading && cartItems.length === 0">
+  Cart is empty. Add a movie from the home page.
+</div>
+
+<section class="checkout-panel">
+  <h2>Checkout</h2>
+  <p>Pending items: {{ cartItems.length }}</p>
+  <p class="total">Total estimate: ₹{{ totalAmount.toFixed(2) }}</p>
+  <button class="btn btn-success" type="button" (click)="checkout()" [disabled]="cartItems.length === 0">
+    Complete checkout
+  </button>
+  <div *ngIf="checkoutResult" class="result">
+    <p>Processed {{ checkoutResult.processedItems }} items</p>
+    <p>Total charged: ₹{{ checkoutResult.totalAmount.toFixed(2) }}</p>
+  </div>
+</section>

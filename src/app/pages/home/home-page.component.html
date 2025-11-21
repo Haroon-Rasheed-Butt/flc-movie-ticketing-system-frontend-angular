@@ -1,0 +1,54 @@
+<section class="hero">
+  <div>
+    <h1>Now showing</h1>
+    <p>Browse curated ticketing experiences and add a show to your cart.</p>
+  </div>
+  <div class="account-picker">
+    <label for="accountSelect" class="form-label">Account</label>
+    <select id="accountSelect" class="form-select" [formControl]="accountControl">
+      <option *ngFor="let account of sampleAccounts" [value]="account.id">
+        {{ account.label }}
+      </option>
+    </select>
+  </div>
+</section>
+
+<section class="movies">
+  <div class="grid" *ngIf="movies.length">
+    <app-movie-card
+      *ngFor="let movie of movies"
+      [movie]="movie"
+      [selectedAccountId]="accountControl.value ?? sampleAccounts[0].id"
+      (addToCart)="handleAddToCart($event)"
+    ></app-movie-card>
+  </div>
+  <div class="empty-state" *ngIf="!movies.length && !isLoading">
+    No movies available. Try refreshing the page.
+  </div>
+  <div class="loading" *ngIf="isLoading">
+    <div class="spinner-border" role="status" aria-label="Loading"></div>
+  </div>
+</section>
+
+<section class="pagination" *ngIf="totalElements > size">
+  <div class="controls">
+    <button class="btn btn-outline-secondary btn-sm" type="button" (click)="changePage(-1)" [disabled]="page === 0">
+      Previous
+    </button>
+    <span>Page {{ page + 1 }} of {{ totalPages }}</span>
+    <button class="btn btn-outline-secondary btn-sm" type="button" (click)="changePage(1)"
+      [disabled]="page + 1 >= totalPages">
+      Next
+    </button>
+    <label class="d-flex align-items-center gap-2">
+      <span>Items per page</span>
+      <select
+        class="form-select form-select-sm"
+        [value]="size"
+        (change)="updatePageSizeFromEvent($event)"
+      >
+        <option *ngFor="let option of pageSizes" [value]="option">{{ option }}</option>
+      </select>
+    </label>
+  </div>
+</section>

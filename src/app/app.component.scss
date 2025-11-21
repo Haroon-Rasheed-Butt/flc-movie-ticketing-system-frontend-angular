@@ -1,0 +1,61 @@
+.app-shell {
+	padding: 1rem;
+	margin: 0 auto;
+	max-width: 1200px;
+}
+
+.loading-bar {
+	height: 4px;
+	background: linear-gradient(90deg, #0d6efd, #6ea8fe);
+	animation: loading-pulse 1s ease-in-out infinite;
+	position: sticky;
+	top: 0;
+	z-index: 1000;
+}
+
+@keyframes loading-pulse {
+	0% {
+		opacity: 0.4;
+	}
+	50% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0.4;
+	}
+}
+
+.app-message {
+	border-bottom: 1px solid #dee2e6;
+	padding: 0.75rem 1rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	font-size: 0.95rem;
+}
+
+.app-message button {
+	background: none;
+	border: none;
+	font-size: 1.25rem;
+	line-height: 1;
+	cursor: pointer;
+	color: inherit;
+	padding: 0;
+}
+
+.app-message.info {
+	background: #f8f9fa;
+	color: #0c5460;
+}
+
+.app-message.success {
+	background: #d1e7dd;
+	color: #0f5132;
+}
+
+.app-message.error {
+	background: #f8d7da;
+	color: #842029;
+}

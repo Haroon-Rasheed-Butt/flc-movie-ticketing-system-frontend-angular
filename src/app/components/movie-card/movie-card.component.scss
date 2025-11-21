@@ -1,0 +1,49 @@
+.movie-card {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.movie-card__poster img {
+  width: 100%;
+  display: block;
+  height: 180px;
+  object-fit: cover;
+}
+
+.movie-card__content {
+  padding: 1rem;
+}
+
+.subtitle {
+  color: #555;
+  font-size: 0.85rem;
+}
+
+.description {
+  font-size: 0.95rem;
+  margin: 0.5rem 0;
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.price-row {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.actions {
+  margin-top: 0.8rem;
+  display: flex;
+  gap: 0.5rem;
+}

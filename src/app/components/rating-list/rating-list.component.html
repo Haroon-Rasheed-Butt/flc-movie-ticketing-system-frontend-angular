@@ -1,0 +1,13 @@
+<div class="no-ratings" *ngIf="ratings.length === 0">
+	No ratings yet. Be the first to review!
+</div>
+<ul class="rating-list list-unstyled" *ngIf="ratings.length">
+	<li *ngFor="let rating of ratings" class="rating-item">
+		<div class="rating-meta">
+			<span class="score badge bg-warning text-dark">{{ rating.rating }} / 5</span>
+			<span class="date">{{ rating.ratingDate | date: 'medium' }}</span>
+		</div>
+		<p>{{ rating.comment || 'No comment provided.' }}</p>
+		<small class="muted">Account {{ rating.accountId }}</small>
+	</li>
+</ul>

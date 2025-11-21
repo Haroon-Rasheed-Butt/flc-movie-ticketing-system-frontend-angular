@@ -1,0 +1,81 @@
+<section class="admin-grid">
+	<div class="card">
+		<div class="card-body">
+			<h2 class="card-title">{{ isEditing ? 'Update movie' : 'Create movie' }}</h2>
+			<form [formGroup]="movieForm" (ngSubmit)="submit()">
+				<div class="field-row">
+					<label class="form-label w-100">
+						Name
+						<input class="form-control" formControlName="name" />
+					</label>
+					<label class="form-label w-100">
+						Genre
+						<input class="form-control" formControlName="genre" />
+					</label>
+				</div>
+				<label class="form-label w-100">
+					Description
+					<textarea class="form-control" rows="3" formControlName="description"></textarea>
+				</label>
+				<div class="field-row">
+					<label class="form-label w-100">
+						Director
+						<input class="form-control" formControlName="director" />
+					</label>
+					<label class="form-label w-100">
+						Actor
+						<input class="form-control" formControlName="actor" />
+					</label>
+				</div>
+				<div class="field-row">
+					<label class="form-label w-100">
+						Type
+						<select class="form-select" formControlName="typeId">
+							<option *ngFor="let type of movieTypes" [value]="type.id">{{ type.label }}</option>
+						</select>
+					</label>
+					<label class="form-label w-100">
+						Year
+						<input class="form-control" type="number" formControlName="publicationYear" />
+					</label>
+				</div>
+				<div class="field-row">
+					<label class="form-label w-100">
+						Ticket price
+						<input class="form-control" type="number" formControlName="ticketPrice" />
+					</label>
+					<label class="form-label w-100">
+						Cover photo
+						<input class="form-control" formControlName="coverPhoto" />
+					</label>
+				</div>
+				<label class="form-label w-100">
+					Owner account ID (optional)
+					<input class="form-control" type="number" formControlName="accountId" />
+				</label>
+				<div class="actions">
+					<button class="btn btn-primary" type="submit">{{ isEditing ? 'Update' : 'Create' }}</button>
+					<button class="btn btn-link" type="button" *ngIf="isEditing" (click)="cancelEdit()">Cancel</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<div class="card">
+		<div class="card-body">
+			<h2 class="card-title">Movies</h2>
+			<ul class="list-unstyled movie-list">
+				<li *ngFor="let movie of movies" class="movie-row">
+					<div>
+						<strong>{{ movie.name }}</strong>
+						<div class="text-muted">{{ movie.genre || 'Genre TBD' }} · ₹{{ movie.ticketPrice.toFixed(2) }}</div>
+					</div>
+					<div class="btn-group">
+						<button class="btn btn-sm btn-outline-primary" type="button" (click)="edit(movie)">Edit</button>
+						<button class="btn btn-sm btn-outline-danger" type="button" (click)="delete(movie)">Delete</button>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</section>

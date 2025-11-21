@@ -1,0 +1,63 @@
+<section class="detail" *ngIf="movie">
+  <div class="poster">
+    <img [src]="movie.coverPhoto || 'https://source.unsplash.com/random/720x320?cinema'" [alt]="movie.name" />
+  </div>
+  <div class="info">
+    <h1>{{ movie.name }}</h1>
+    <p class="subtitle">{{ movie.typeName }} · {{ movie.genre || 'General' }}</p>
+    <p>{{ movie.description }}</p>
+    <div class="meta-row">
+      <span>Directed by {{ movie.director || 'TBD' }}</span>
+      <span>Actor: {{ movie.actor || 'TBD' }}</span>
+    </div>
+    <div class="meta-row">
+      <span>Ticket: ₹{{ movie.ticketPrice.toFixed(2) }}</span>
+      <span>Year: {{ movie.publicationYear || 'TBD' }}</span>
+    </div>
+    <div class="rating-summary">
+      <strong>Average rating:</strong>
+      <span>{{ averageRating.toFixed(1) }}/5 ({{ ratings.length }} reviews)</span>
+    </div>
+    <form class="cart-form" [formGroup]="cartForm" (ngSubmit)="addToCart()">
+      <h3>Add to cart</h3>
+      <div class="field-row">
+        <label class="form-label w-100">
+          Account
+          <select class="form-select" formControlName="accountId">
+            <option *ngFor="let account of sampleAccounts" [value]="account.id">{{ account.label }}</option>
+          </select>
+        </label>
+        <label class="form-label w-100">
+          Quantity
+          <input class="form-control" type="number" formControlName="quantity" />
+        </label>
+      </div>
+      <button class="btn btn-primary" type="submit" [disabled]="cartForm.invalid">Add to Cart</button>
+    </form>
+    <form class="rating-form" [formGroup]="ratingForm" (ngSubmit)="submitRating()">
+      <h3>Add rating</h3>
+      <div class="field-row">
+        <label class="form-label w-100">
+          Account
+          <select class="form-select" formControlName="accountId">
+            <option *ngFor="let account of sampleAccounts" [value]="account.id">{{ account.label }}</option>
+          </select>
+        </label>
+        <label class="form-label w-100">
+          Stars
+          <input class="form-control" type="number" formControlName="rating" />
+        </label>
+      </div>
+      <label class="form-label w-100">
+        Comment
+        <textarea class="form-control" rows="3" formControlName="comment"></textarea>
+      </label>
+      <button class="btn btn-outline-secondary" type="submit" [disabled]="ratingForm.invalid">Submit rating</button>
+    </form>
+  </div>
+</section>
+
+<section class="rating-section">
+  <h2>Community ratings</h2>
+  <app-rating-list [ratings]="ratings"></app-rating-list>
+</section>

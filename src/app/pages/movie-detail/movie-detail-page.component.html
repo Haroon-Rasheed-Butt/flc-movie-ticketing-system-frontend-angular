@@ -1,6 +1,6 @@
 <section class="detail" *ngIf="movie">
   <div class="poster">
-    <img [src]="movie.coverPhoto || 'https://source.unsplash.com/random/720x320?cinema'" [alt]="movie.name" />
+    <img src="assets/images/movie-box.jpg" [alt]="movie.name" />
   </div>
   <div class="info">
     <h1>{{ movie.name }}</h1>
@@ -11,7 +11,7 @@
       <span>Actor: {{ movie.actor || 'TBD' }}</span>
     </div>
     <div class="meta-row">
-      <span>Ticket: ₹{{ movie.ticketPrice.toFixed(2) }}</span>
+      <span>Ticket: ${{ movie.ticketPrice.toFixed(2) }}</span>
       <span>Year: {{ movie.publicationYear || 'TBD' }}</span>
     </div>
     <div class="rating-summary">

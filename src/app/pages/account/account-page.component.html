@@ -59,7 +59,7 @@
         <ul class="list-unstyled">
           <li *ngFor="let tx of transactions">
             <div class="d-flex justify-content-between">
-              <strong>₹{{ tx.totalAmount.toFixed(2) }}</strong>
+              <strong>${{ tx.totalAmount.toFixed(2) }}</strong>
               <span>{{ tx.status }}</span>
             </div>
             <small>{{ tx.transactionDate | date: 'medium' }}</small>

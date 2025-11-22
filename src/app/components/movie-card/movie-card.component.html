@@ -1,6 +1,6 @@
 <article *ngIf="movie" class="movie-card card">
   <div class="movie-card__poster">
-    <img [src]="movie.coverPhoto || placeholder" [alt]="movie.name" loading="lazy" />
+    <img [src]="posterUrl" [alt]="movie.name" loading="lazy" />
   </div>
   <div class="movie-card__content card-body">
     <h3 class="card-title">{{ movie.name }}</h3>
@@ -11,7 +11,7 @@
       <span>{{ movie.actor || 'Actor TBD' }}</span>
     </div>
     <div class="price-row">
-      <strong>₹{{ movie.ticketPrice.toFixed(2) }}</strong>
+      <strong>${{ movie.ticketPrice.toFixed(2) }}</strong>
       <span class="year">{{ movie.publicationYear || 'Year TBD' }}</span>
     </div>
     <div class="actions">

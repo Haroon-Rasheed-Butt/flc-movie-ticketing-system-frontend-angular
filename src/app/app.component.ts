@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, asyncScheduler } from 'rxjs';
+import { distinctUntilChanged, observeOn } from 'rxjs/operators';
 import { LoaderService } from './core/services/loader.service';
 import { MessageService, UiMessage } from './core/services/message.service';
 
@@ -16,7 +17,7 @@ export class AppComponent {
     private readonly loader: LoaderService,
     private readonly messages: MessageService
   ) {
-    this.loading$ = this.loader.loading$;
+    this.loading$ = this.loader.loading$.pipe(distinctUntilChanged(), observeOn(asyncScheduler));
     this.message$ = this.messages.message$;
   }
 

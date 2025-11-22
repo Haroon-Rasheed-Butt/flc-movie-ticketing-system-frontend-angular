@@ -11,7 +11,7 @@ export class MovieCardComponent {
   @Input() selectedAccountId = 1;
   @Output() addToCart = new EventEmitter<{ movieId: number; accountId: number }>();
 
-  placeholder = 'https://source.unsplash.com/random/600x400?movie';
+  readonly posterUrl = 'assets/images/movie-box.jpg';
 
   emitAdd(): void {
     if (!this.movie) {

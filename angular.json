@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "MovieTicketingFrontend_Haroon": {
+    "MovieTicketingFrontend_Meera": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/movie-ticketing-frontend-haroon",
+            "outputPath": "dist/movie-ticketing-frontend-meera",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -70,10 +70,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "MovieTicketingFrontend_Haroon:build:production"
+              "buildTarget": "MovieTicketingFrontend_Meera:build:production"
             },
             "development": {
-              "buildTarget": "MovieTicketingFrontend_Haroon:build:development"
+              "buildTarget": "MovieTicketingFrontend_Meera:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -110,5 +110,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

@@ -37,7 +37,7 @@ describe('Movie Ticketing flow', () => {
           typeId: 2,
           typeName: 'Drama',
           ownerId: 1,
-          ownerUsername: 'haroon'
+          ownerUsername: 'meera'
         }
       }
     }).as('postMovie');

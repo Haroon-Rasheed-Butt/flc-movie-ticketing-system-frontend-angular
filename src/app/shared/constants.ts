@@ -1,5 +1,5 @@
 export const SAMPLE_ACCOUNTS = [
-  { id: 1, label: 'Haroon (haroon)' },
+  { id: 1, label: 'Meera (meera)' },
   { id: 2, label: 'Sara (sara)' },
   { id: 3, label: 'Ali (ali)' },
   { id: 4, label: 'Maya (maya)' },

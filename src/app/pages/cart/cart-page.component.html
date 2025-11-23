@@ -15,13 +15,13 @@
 </div>
 
 <div class="cart-list" *ngIf="!isLoading && cartItems.length">
-    <div *ngFor="let item of cartItems" class="cart-item card">
-      <div class="card-body">
-        <h3 class="card-title">{{ item.movieName }}</h3>
-        <p class="text-muted small mb-2">Qty: {{ item.quantity }} · ${{ item.ticketPrice.toFixed(2) }}</p>
-        <p class="mb-0">Purchased: {{ item.purchased ? 'Yes' : 'No' }}</p>
-      </div>
+  <div *ngFor="let item of cartItems" class="cart-item card">
+    <div class="card-body">
+      <h3 class="card-title">{{ item.movieName }}</h3>
+      <p class="text-muted small mb-2">Qty: {{ item.quantity }} · AED{{ item.ticketPrice.toFixed(2) }}</p>
+      <p class="mb-0">Purchased: {{ item.purchased ? 'Yes' : 'No' }}</p>
     </div>
+  </div>
 </div>
 
 <div class="empty" *ngIf="!isLoading && cartItems.length === 0">
@@ -31,12 +31,12 @@
 <section class="checkout-panel">
   <h2>Checkout</h2>
   <p>Pending items: {{ cartItems.length }}</p>
-  <p class="total">Total estimate: ${{ totalAmount.toFixed(2) }}</p>
+  <p class="total">Total estimate: AED{{ totalAmount.toFixed(2) }}</p>
   <button class="btn btn-success" type="button" (click)="checkout()" [disabled]="cartItems.length === 0">
     Complete checkout
   </button>
   <div *ngIf="checkoutResult" class="result">
     <p>Processed {{ checkoutResult.processedItems }} items</p>
-    <p>Total charged: ${{ checkoutResult.totalAmount.toFixed(2) }}</p>
+    <p>Total charged: AED{{ checkoutResult.totalAmount.toFixed(2) }}</p>
   </div>
 </section>
